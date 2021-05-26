@@ -89,8 +89,8 @@ def prep_telco_model(df):
     df['less_than_a_year'] = (((df['tenure'] < 12) == True) & ((df['churn'] == 1) == True)).astype(int)
 
     # split into train validate and test 
-    # Stratifies on new column less_than_a_year, similar to churn
-    train, validate, test = test_train_split(df, stratify_val='less_than_a_year')
+    # Maybe try stratifying on new column less_than_a_year, similar to churn
+    train, validate, test = test_train_split(df)
 
     return train, validate, test
 
