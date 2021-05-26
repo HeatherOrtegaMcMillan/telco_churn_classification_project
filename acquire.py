@@ -11,7 +11,7 @@ def get_db_url(db_name, user=user, host=host, password=password):
     url = f'mysql+pymysql://{user}:{password}@{host}/{db_name}'
     return url
 
-def get_db_data():
+def get_telco_data():
     '''
     This function reads data from the Codeup db into a df. Query is long to customize columns being pulled over.
     '''
