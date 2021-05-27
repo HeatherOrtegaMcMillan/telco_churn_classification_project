@@ -32,6 +32,15 @@ def get_telco_data():
         """
     return pd.read_sql(sql_query, get_db_url('telco_churn'))
 
-
+def counting_values(df):
+    '''
+    This function takes in a dataframe and prints a value counts for every value that's an object
+    '''
+    for col in df.columns:
+        # skip over customer ID column
+        if col == 'customer_id':
+            continue
+        if df[col].dtype == 'object':
+            print(df[col].value_counts(dropna=False))
 
     
