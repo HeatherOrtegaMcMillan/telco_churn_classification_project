@@ -59,6 +59,18 @@ def prep_telco(df):
 
     return train, validate, test
 
+def prep_telco_hypothesis(df):
+    """
+    This functions takes in the telco churn dataframe and retuns the cleaned and prepped dataset
+    Use this function for exploring
+    """
+
+    df.total_charges = df.total_charges.str.replace(' ', '0').astype(float)
+    df['less_than_a_year'] = (((df['tenure'] < 12) == True) & ((df['churn'] == 'Yes') == True)).astype(int)
+    train, validate, test = test_train_split(df)
+
+    return train, validate, test
+
 def prep_telco_model(df):
     '''
     This function takes in a dataframe and returns the cleaned, encoded and split data.
