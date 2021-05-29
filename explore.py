@@ -44,15 +44,25 @@ def run_metrics(X, y, model, data_set = 'This'):
     fpr = matrix[0,1] / (matrix[0,1] + matrix[0,0])
     tnr = matrix[0,0] / (matrix[0,0] + matrix[0,1])
     fnr = matrix[1,0] / (matrix[1,1] + matrix[1,0])
+    prc = matrix[1,1] / (matrix[1,1] + matrix[0,1])
+
+    pred = model.predict(X)
+
+    mat =  pd.DataFrame ((confusion_matrix(y, pred )),index = ['actual_not_churned','actual_churned'], columns =['pred_not_churned','pred_churned'])
+    rubric_df = pd.DataFrame([['True Negative', 'False positive'], ['False Negative', 'True Positive']], columns=mat.columns, index=mat.index)
+    cf = rubric_df + ': ' + mat.values.astype(str)
+
     print(f'{data_set} data set accuracy score: {score:.2%}')
+    print(f'{data_set} data set recall score: {tpr:.2%}')
+    print(f'{data_set} data set precision score {prc:.2%}')
     class_report = classification_report(y, model.predict(X), zero_division=True)
-    print('-------------------------------')
+    print ('-------------------------------')
     print(f'classification report')
     print(class_report)
     print ('-------------------------------')
     print('')
     print('confusion matrix')
-    print(matrix)
+    display(cf)
     print(' ')
     print(f'{data_set} data set model metrics')
     print('---------------------------------')
@@ -60,11 +70,8 @@ def run_metrics(X, y, model, data_set = 'This'):
     print(f'False positive rate for the model is  {fpr:.2%}')
     print(f'True negative rate for the model is {tnr:.2%}')
     print(f'False negative rate for the model is {fnr:.2%}')
-    prc = matrix[1,1] / (matrix[1,1] + matrix[0,1])
-    print('---------------------------------')
-    print(f'{data_set} data set accuracy score: {score:.2%}')
-    print(f'{data_set} data set precision score {prc:.2%}')
-    print(f'{data_set} data set recall score: {tpr:.2%}')
+    print ('-------------------------------')
+
 
 ######### Contingency metrics, hypothesis testing function
 def contingency_metrics(crosstab, alpha = 0.05):
@@ -89,3 +96,65 @@ def contingency_metrics(crosstab, alpha = 0.05):
         print(f'\n~~~~ We cannot reject the null hypothesis ~~~~ ')
               
 
+# Function for model performs. move to explore.py
+def model_performs (X_df, y_df, model):
+    '''
+    Take in a X_df, y_df and model  and fit the model , make a prediction, calculate score (accuracy), 
+    confusion matrix, rates, clasification report.
+    X_df: train, validate or  test. Select one
+    y_df: it has to be the same as X_df.
+    model: name of your model that you prevously created 
+    
+    Example:
+    mmodel_performs (X_train, y_train, model1)
+    '''
+
+    #prediction
+    pred = model.predict(X_df)
+
+    #score = accuracy
+    acc = model.score(X_df, y_df)
+
+    #conf Matrix
+    conf = confusion_matrix(y_df, pred)
+    mat =  pd.DataFrame ((confusion_matrix(y_df, pred )),index = ['actual_not_churned','actual_churned'], columns =['pred_not_churned','pred_churned' ])
+    rubric_df = pd.DataFrame([['True Negative', 'False positive'], ['False Negative', 'True Positive']], columns=mat.columns, index=mat.index)
+    cf = rubric_df + ': ' + mat.values.astype(str)
+
+    #assign the values
+    tp = conf[1,1]
+    fp =conf[0,1] 
+    fn= conf[1,0]
+    tn =conf[0,0]
+
+    #calculate the rate
+    tpr = tp/(tp+fn)
+    fpr = fp/(fp+tn)
+    tnr = tn/(tn+fp)
+    fnr = fn/(fn+tp)
+
+    #classification report
+    clas_rep =pd.DataFrame(classification_report(y_df, pred, output_dict=True)).T
+    clas_rep.rename(index={'0': "not churned", '1': "churned"}, inplace = True)
+    print(f'''
+    The accuracy for our model is {acc:.4%}
+
+    The True Positive Rate is {tpr:.3%},    The False Positive Rate is {fpr:.3%},
+    The True Negative Rate is {tnr:.3%},    The False Negative Rate is {fnr:.3%}
+
+    ________________________________________________________________________________
+    ''')
+    print('''
+    The positive is  'churned'
+
+    Confusion Matrix
+    ''')
+    display(cf)
+    print('''
+
+    ________________________________________________________________________________
+    
+    Classification Report:
+    ''')
+    display(clas_rep)
+   
