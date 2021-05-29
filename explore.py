@@ -3,6 +3,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, confusion_matrix
+import scipy.stats as stats
 
 
 ################################### telco_churn Exploring Functions ###############################
@@ -64,4 +65,27 @@ def run_metrics(X, y, model, data_set = 'This'):
     print(f'{data_set} data set accuracy score: {score:.2%}')
     print(f'{data_set} data set precision score {prc:.2%}')
     print(f'{data_set} data set recall score: {tpr:.2%}')
+
+######### Contingency metrics, hypothesis testing function
+def contingency_metrics(crosstab, alpha = 0.05):
+    '''
+    This function takes in a crosstab, and outputs the observed, expected values, chi2 and p statistics.
+    Alpha is automatically set to 0.05. Will say if null hypothesis can be rejected or not.
+    '''
+    chi2, p, degf, expected = stats.chi2_contingency(crosstab)
+
+    crosstab.rename(index={0: 'Stayed', 1: 'Churned'}, inplace=True)
+    
+    print('~~ Observed ~~\n')
+    display(crosstab)
+    print('\n~~ Expected ~~\n')
+    display(pd.DataFrame(expected.round(), index=crosstab.index, columns=crosstab.columns))
+    print('\n~~ Statistics ~~\n')
+    print(f'chi^2 = {chi2:.4f}')
+    print(f'p     = {p:.4f}')
+    if p < alpha:
+        print(f'\n~~~~ We can reject the null hypothesis. Yay! ~~~~')
+    else:
+        print(f'\n~~~~ We cannot reject the null hypothesis ~~~~ ')
+              
 
