@@ -106,5 +106,29 @@ def prep_telco_model(df):
 
     return train, validate, test
 
+def prep_full_telco(df):
+    '''
+    Does the same thing as prep_telco_model except no split. for creating CSV
+    '''
 
+    df.total_charges = df.total_charges.str.replace(' ', '0').astype(float)
+    
+    # list of columns to drop
+    cols_to_drop = ['payment_type_id', 'internet_service_type_id','contract_type_id']
 
+    # drop superfulous columns
+    df = df.drop(columns=cols_to_drop)
+
+    # get list of columns that need to be encoded
+    cols = [col for col in list(df.columns) if df[col].dtype == 'object']
+
+    # turn all text (object) columns to numbers using LabelEncoder()
+    label_encoder = LabelEncoder()
+    for col in cols:
+        if col != 'customer_id':
+            df[col] = label_encoder.fit_transform(df[col])
+
+    # adds column for less than a year, If their tenure is less than a year and they have churned it's a 1
+    df['less_than_a_year'] = (((df['tenure'] < 12) == True) & ((df['churn'] == 1) == True)).astype(int)
+
+    return df
