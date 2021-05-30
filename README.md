@@ -1,7 +1,11 @@
 # Telco Churn Classification Project
 
 ## Project Description
- - machine learning project with the telco dataset
+ - Classification machine learning project with the telco dataset as a project for Codeup
+ - Telco Data was acquired from Codeup's database
+ - Practice working through all the stages of the Data Science pipline for this project (data acquistion, preparation, exploratory data analysis and statistical testing, modeling, and delivery) 
+ - Goal is to determine several drivers of churn, devlop a classification model for predictiing customer churn and give reccomendations and breakdown of finding.
+ 
 
 ## Data dictionary
 Target  | Description   | Data Type
@@ -40,14 +44,43 @@ churn   | indicates whether or not a customer churned | int64
 customer_id | customer id number                       | object
 
 ## Ideas and Hypotheses
+### Key Findings
+- Does having Internet relate to whether customer churns in the first year?
+    - According to $\chi^2$ testing 
+, there's evidence to suggest that having internet or not, relates to customer churn.
+- Does paying by a mailed check relate to whether customer churns in the first year?
+    - Accoridng to $\chi^2$ testing there's evidence to suggest that payment type is related to custoemr churn.  
 
 ## How to recreatae this Project
 You will need your own env file with database credentials along with all the necessary files listed below to run my final project notebook.
 
 1. Read the README.md
-2. Download the aquire.py, prepare.py, and final_report.ipynb files into your working directory
+2. Download the aquire.py, prepare.py, explore.py and final_report.ipynb files into your working directory
 3. Add your own env file to your directory. (user, password, host)
 4. Run the final_telco_report.ipynb notebook
+
+### Skills Required
+Technical Skills
+- Python
+    - Pandas
+    - Seaborn
+    - Matplotlib
+    - Numpy -Sklearn
+
+- SQL
+
+- Statistical Analysis
+    - Descriptive Stats
+    - Hypothesis Testing
+    - T-test
+    - Chi^2 Test
+
+- Classifcation Modeling
+    - Logistical Regression
+    - Random Forest
+    - KNN
+    - Baseline Accuracy
+
 
 ### Other Related Resourses
 - [First telco churn project](https://public.tableau.com/profile/heather.mcmillan#!/vizhome/StorytellingProject-TelcoChurn/RetentionPresentation) on Tableau
