@@ -105,22 +105,22 @@ Technical Skills
 - My [Trello Board](https://trello.com/b/5lC2YbuY/classification-project) for this project
 
 ### Deliverables 
-- Jupyter Final Report Notebook (add link)
+- [Jupyter Final Report Notebook](https://github.com/HeatherOrtegaMcMillan/telco_churn_classification_project/blob/main/final_telco_report.ipynb)
     - code is commented in notebook adequately
     - supporting markdown text guides the reader through thought process and takeaways
     - functions in acquire and prepare modules include docstrings
 
 - README.md file containing the following:
-    - project description and goals (add link)
-    - data dictionary (add link)
-    - project planning (add link)
-    - Initial ideas/hypotheses stated (add link)
-    - instructions for recreating project/running repo (add link)
+    - project description and goals
+    - data dictionary
+    - project planning
+    - Initial ideas/hypotheses stated
+    - instructions for recreating project/running repo
 
 - CSV file with customer_id, probability of churn, predictions (add link)
 
 - Modules to recreate project present (See Module Breakdown)
-    - acquire.py (add link)
-    - prepare.py (add link)
-    - 
+    - [acquire.py](https://github.com/HeatherOrtegaMcMillan/telco_churn_classification_project/blob/main/acquire.py)
+    - [prepare.py](https://github.com/HeatherOrtegaMcMillan/telco_churn_classification_project/blob/main/prepare.py)
+    - [explore.py](https://github.com/HeatherOrtegaMcMillan/telco_churn_classification_project/blob/main/explore.py)
 - Notebook walkthrough presentation (See Presentation Best Practices)

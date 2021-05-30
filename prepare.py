@@ -108,7 +108,7 @@ def prep_telco_model(df):
 
 def prep_full_telco(df):
     '''
-    Does the same thing as prep_telco_model except no split. for creating CSV
+    Does the same thing as prep_telco_model except no split. For creating CSV
     '''
 
     df.total_charges = df.total_charges.str.replace(' ', '0').astype(float)
