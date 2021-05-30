@@ -46,10 +46,28 @@ customer_id | customer id number                       | object
 ## Ideas and Hypotheses
 ### Key Findings
 - Does having Internet relate to whether customer churns in the first year?
-    - According to $\chi^2$ testing 
+    - According to chi2 testing 
 , there's evidence to suggest that having internet or not, relates to customer churn.
 - Does paying by a mailed check relate to whether customer churns in the first year?
-    - Accoridng to $\chi^2$ testing there's evidence to suggest that payment type is related to custoemr churn.  
+    - Accoridng to chi2 testing there's evidence to suggest that payment type is related to customer churn.  
+
+<hr style="border-top: 10px groove #8b0aa5; margin-top: 1px; margin-bottom: 1px"></hr>
+
+### Models
+
+- I found that Model 4 (a Random Forest) performed best, using most of the features in our dataset
+    - Accuracy on validate was 91.7%
+    - Recall was 67%
+    - Accuracy on Test 89.3% accuracy which was only slighly lower than our accuracy on validate set
+    - Recall stayed pretty high (relatively so) as well 64.9%
+- Dive down into feature selection and engineering to see if this can bump up model performance
+- Splitting up the data further and running tests on only the Month to Month customers
+- Split up data to hide tenure, and only do customers who've been with the company for a year
+- Take closer look at Internet service type and Payment type drivers and see where exactly that is
+
+### Reccomendations
+- Offer promotions to lower monthly cost by changing payment type
+- Offer promotion to lower monthly cost for month to month customers when they add internet service
 
 ## How to recreatae this Project
 You will need your own env file with database credentials along with all the necessary files listed below to run my final project notebook.
