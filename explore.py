@@ -24,7 +24,7 @@ def plot_counts(df):
             plt.show()
 
 
-###### RUN METRICS FUNCTION 
+###### RUN METRICS FUNCTION for testing models
 def run_metrics(X, y, model, data_set = 'This'):
     """
     This function takes in a sklearn model and a data set name and prints out metrics for that model. 
@@ -39,7 +39,9 @@ def run_metrics(X, y, model, data_set = 'This'):
     USE EXAMPLE: run_metrics(X_train, y_train, model1, data_set = 'Train')
     """
     score = model.score(X, y)
+
     matrix = confusion_matrix(y, model.predict(X))
+
     tpr = matrix[1,1] / (matrix[1,1] + matrix[1,0])
     fpr = matrix[0,1] / (matrix[0,1] + matrix[0,0])
     tnr = matrix[0,0] / (matrix[0,0] + matrix[0,1])
@@ -52,10 +54,12 @@ def run_metrics(X, y, model, data_set = 'This'):
     rubric_df = pd.DataFrame([['True Negative', 'False positive'], ['False Negative', 'True Positive']], columns=mat.columns, index=mat.index)
     cf = rubric_df + ': ' + mat.values.astype(str)
 
+    class_report = classification_report(y, model.predict(X), zero_division=True)
+
     print(f'{data_set} data set accuracy score: {score:.2%}')
     print(f'{data_set} data set recall score: {tpr:.2%}')
     print(f'{data_set} data set precision score {prc:.2%}')
-    class_report = classification_report(y, model.predict(X), zero_division=True)
+    
     print ('-------------------------------')
     print(f'classification report')
     print(class_report)
@@ -96,7 +100,7 @@ def contingency_metrics(crosstab, alpha = 0.05):
         print(f'\n~~~~ We cannot reject the null hypothesis ~~~~ ')
               
 
-# Function for model performs. move to explore.py
+# Function for model performs.
 def model_performs (X_df, y_df, model):
     '''
     Take in a X_df, y_df and model  and fit the model , make a prediction, calculate score (accuracy), 
