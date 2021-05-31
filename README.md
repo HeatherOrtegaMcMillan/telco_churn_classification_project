@@ -73,7 +73,7 @@ customer_id | customer id number                       | object
 You will need your own env file with database credentials along with all the necessary files listed below to run my final project notebook.
 
 1. Read the README.md
-2. Download the aquire.py, prepare.py, explore.py and final_report.ipynb files into your working directory
+2. Download the aquire.py, prepare.py, explore.py and final_report.ipynb files into your working directory, or clone this repository 
 3. Add your own env file to your directory. (user, password, host)
 4. Run the final_telco_report.ipynb notebook
 
