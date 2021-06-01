@@ -46,20 +46,21 @@ customer_id | customer id number                       | object
 ## Ideas and Hypotheses
 ### Key Findings
 - Does having Internet relate to whether customer churns in the first year?
-    - According to chi2 testing 
-, there's evidence to suggest that having internet or not, relates to customer churn.
+    - According to chi2 testing , there's evidence to suggest that having internet or not, relates to customer churn.
 - Does paying by a mailed check relate to whether customer churns in the first year?
     - Accoridng to chi2 testing there's evidence to suggest that payment type is related to customer churn.  
 
 <hr style="border-top: 10px groove #8b0aa5; margin-top: 1px; margin-bottom: 1px"></hr>
 
 ### Models
-
+- Created 4 classification models (Decision tree, KNN, and 2 Random Forest)
 - I found that Model 4 (a Random Forest) performed best, using most of the features in our dataset
     - Accuracy on validate was 91.7%
-    - Recall was 67%
-    - Accuracy on Test 89.3% accuracy which was only slighly lower than our accuracy on validate set
-    - Recall stayed pretty high (relatively so) as well 64.9%
+    - Recall on validate was 67%
+    - Accuracy on Test: 89.3% accuracy, which was only slighly lower than our accuracy on validate set
+    - Recall on Test: 64.9%
+
+### Goals for future exploration
 - Dive down into feature selection and engineering to see if this can bump up model performance
 - Splitting up the data further and running tests on only the Month to Month customers
 - Split up data to hide tenure, and only do customers who've been with the company for a year
@@ -69,7 +70,7 @@ customer_id | customer id number                       | object
 - Offer promotions to lower monthly cost by changing payment type
 - Offer promotion to lower monthly cost for month to month customers when they add internet service
 
-## How to recreatae this Project
+## How to Recreate this Project
 You will need your own env file with database credentials along with all the necessary files listed below to run my final project notebook.
 
 1. Read the README.md
@@ -117,10 +118,10 @@ Technical Skills
     - Initial ideas/hypotheses stated
     - instructions for recreating project/running repo
 
-- CSV file with customer_id, probability of churn, predictions (add link)
+- [CSV file](https://github.com/HeatherOrtegaMcMillan/telco_churn_classification_project/blob/main/predictions.csv) with customer_id, probability of churn, predictions 
 
 - Modules to recreate project present (See Module Breakdown)
     - [acquire.py](https://github.com/HeatherOrtegaMcMillan/telco_churn_classification_project/blob/main/acquire.py)
     - [prepare.py](https://github.com/HeatherOrtegaMcMillan/telco_churn_classification_project/blob/main/prepare.py)
     - [explore.py](https://github.com/HeatherOrtegaMcMillan/telco_churn_classification_project/blob/main/explore.py)
-- Notebook walkthrough presentation (See Presentation Best Practices)
+- Notebook walkthrough presentation
