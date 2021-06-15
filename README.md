@@ -4,7 +4,7 @@
  - Classification machine learning project with the telco dataset as a project for Codeup
  - Telco Data was acquired from Codeup's database
  - Practice working through all the stages of the Data Science pipline for this project (data acquistion, preparation, exploratory data analysis and statistical testing, modeling, and delivery) 
- - Goal is to determine several drivers of churn, devlop a classification model for predictiing customer churn and give reccomendations and breakdown of finding.
+ - Goal is to determine several drivers of churn, develop a classification model for predicting customer churn and give recommendations and breakdown of findings.
  
 
 ## Data dictionary
